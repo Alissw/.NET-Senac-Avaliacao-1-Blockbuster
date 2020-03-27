@@ -4,11 +4,11 @@ namespace Entidades
 {
     class Cliente
     {
-        private int idCliente; // Background
-        private String nomeCliente;
-        private String dataNascimento;
-        private String cpf;
-        private int diasDevolucao;
+        public int idCliente { get; set; }// Background
+        public String nomeCliente { get; set; }
+        public String dataNascimento { get; set; }
+        public String cpf { get; set; }
+        public int diasDevolucao { get; set; }
 
         public Cliente(int idCliente, String nomeCliente, String dataNascimento, String cpf, int diasDevolucao)
         {
@@ -19,7 +19,7 @@ namespace Entidades
             this.diasDevolucao = diasDevolucao;
         }
 
-        public void dadosCliente()
+        public void DadosCliente()
         {
             Console.WriteLine("###Dados do cliente###");
             Console.WriteLine("ID do cliente: " + this.idCliente);
@@ -29,34 +29,6 @@ namespace Entidades
             Console.WriteLine();
             Console.WriteLine("-----------------------------------------------------------------");
             Console.WriteLine();
-        }
-
-        // Getter e Setter do idCliente
-        public int GSIdCliente
-        {
-            get => idCliente;
-            set => idCliente = value;
-        }
-
-        // Getter e Setter do idCliente
-        public String GSNomeCliente
-        {
-            get => nomeCliente;
-            set => nomeCliente = value;
-        }
-        public String GSDataNacimento
-        {
-            get => dataNascimento;
-            set => dataNascimento = value;
-        }
-        public String GCpf
-        {
-            get => cpf;
-        }
-        public int GSDiaDevolucao
-        {
-            get => diasDevolucao;
-            set => diasDevolucao = value;
         }
     }
 }

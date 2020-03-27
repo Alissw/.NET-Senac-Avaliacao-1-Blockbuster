@@ -5,9 +5,9 @@ namespace Entidades
 {
     class Locacao
     {
-        private int idLocacao;
-        Cliente cliente;
-        private DateTime dataLocacao = DateTime.Now;
+        public int idLocacao { get; set; }
+        public Cliente cliente;
+        public DateTime dataLocacao = DateTime.Now;
         List<Filme> filmes = new List<Filme>();
         public Locacao(int idLocacao, Cliente cliente)
         {
@@ -15,62 +15,56 @@ namespace Entidades
             this.cliente = cliente;
         }
         //Mostra os dados da locação
-        public void dadosLocacao()
+        public void DadosLocacao()
         {
 
             Console.WriteLine("###Locações feitas###");
             Console.WriteLine("ID locação " + this.idLocacao);
             Console.WriteLine("Data da locação: " + this.dataLocacao.ToString("dd/MM/yyyy"));
-            Console.WriteLine("Data da devolução: " + Devolver());
-            Console.WriteLine("Dias locados: " + cliente.GSDiaDevolucao);
+            Console.WriteLine("Data da devolução: " + DevolverFilme());
+            Console.WriteLine("Dias locados: " + cliente.diasDevolucao);
             Console.WriteLine("Quantidade de filmes locados: " + QtdFilmeLocados());
             Console.WriteLine();
             Console.WriteLine("###Filmes###");
-            mostrarFilme();
+            MostrarFilme();
             Console.WriteLine("-------------------------------------------------");
-            Console.WriteLine("Total a pagar: R$ " + valorTotal().ToString("F"));
+            Console.WriteLine("Total a pagar: R$ " + ValorTotal().ToString("F"));
         }
         //Adiciona um filme
-        public void addFilme(Filme filme)
+        public void AdicionarFilme(Filme filme)
         {
             filmes.Add(filme);
         }
         //Mostra dados breve do(s) filme(s) locado(s)
-        public void mostrarFilme()
+        public void MostrarFilme()
         {
             System.Text.StringBuilder txt = new System.Text.StringBuilder();
             foreach (Filme filme in filmes)
             {
-                Console.WriteLine(filme.GSNomeFilme + ", R$ " + filme.GSvalorLocacao.ToString("F"));
+                Console.WriteLine(filme.nomeFilme + ", R$ " + filme.valorLocacao.ToString("F"));
             }
         }
-       //Mostra quantidade de filmes locados 
+        //Mostra quantidade de filmes locados 
         public int QtdFilmeLocados()
         {
             return this.filmes.Count;
         }
         //Calcula data de devolução
-        public String Devolver()
+        public String DevolverFilme()
         {
 
             DateTime data = DateTime.Now;
-            return data.AddDays(cliente.GSDiaDevolucao).ToString("dd/MM/yyyy");
+            return data.AddDays(cliente.diasDevolucao).ToString("dd/MM/yyyy");
         }
         //Calcula valor total do(s) filme(s) locado(s)
-        public float valorTotal()
+        public float ValorTotal()
         {
             float valorTotal = 0;
             foreach (Filme filme in filmes)
             {
-                valorTotal += filme.GSvalorLocacao;
+                valorTotal += filme.valorLocacao;
             }
             return valorTotal;
-        }
-
-        public int GSIdLocacao
-        {
-            get => idLocacao;
-            set => idLocacao = value;
         }
         public DateTime GSDataLocacao
         {
